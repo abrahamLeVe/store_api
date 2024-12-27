@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "colors",
+  "info": {
+    "singularName": "color",
+    "pluralName": "colors",
+    "displayName": "Color",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 80,
+      "minLength": 3
+    },
+    "hexadecimal": {
+      "type": "string",
+      "default": "#",
+      "required": true,
+      "unique": true,
+      "maxLength": 30,
+      "minLength": 3
+    },
+    "prices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::price.price",
+      "mappedBy": "colors"
+    }
+  }
+}

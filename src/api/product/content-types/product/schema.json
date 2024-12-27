@@ -47,9 +47,17 @@
         "videos"
       ]
     },
-    "price": {
-      "type": "decimal",
-      "required": true
+    "sub_category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sub-category.sub-category",
+      "inversedBy": "productos"
+    },
+    "prices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::price.price",
+      "mappedBy": "producto"
     }
   }
 }

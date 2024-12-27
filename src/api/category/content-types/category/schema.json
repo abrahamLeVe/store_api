@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "banners",
+  "collectionName": "categories",
   "info": {
-    "singularName": "banner",
-    "pluralName": "banners",
-    "displayName": "Banner",
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Categoría padre",
     "description": ""
   },
   "options": {
@@ -16,7 +16,12 @@
       "type": "string",
       "required": true,
       "unique": true,
-      "maxLength": 360,
+      "maxLength": 80,
+      "minLength": 3
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 200,
       "minLength": 3
     },
     "image": {
@@ -27,6 +32,12 @@
         "images",
         "videos"
       ]
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "categories"
     }
   }
 }

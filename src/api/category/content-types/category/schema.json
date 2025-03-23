@@ -35,9 +35,22 @@
     },
     "sub_categories": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::sub-category.sub-category",
-      "mappedBy": "categories"
+      "mappedBy": "category"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 99
+    },
+    "producto": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "category"
     }
   }
 }

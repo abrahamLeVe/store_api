@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "sub_categories",
+  "collectionName": "brands",
   "info": {
-    "singularName": "sub-category",
-    "pluralName": "sub-categories",
-    "displayName": "Sub categoría",
+    "singularName": "brand",
+    "pluralName": "brands",
+    "displayName": "brand",
     "description": ""
   },
   "options": {
@@ -12,33 +12,35 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true,
-      "maxLength": 80,
-      "minLength": 3
+      "maxLength": 99,
+      "minLength": 1
     },
     "image": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
+        "files",
         "images",
         "videos"
       ]
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "sub_categories"
-    },
     "products": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::product.product",
-      "inversedBy": "sub_categories"
+      "mappedBy": "brand"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true,
+      "minLength": 1,
+      "maxLength": 99
     }
   }
 }

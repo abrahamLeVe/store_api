@@ -16,17 +16,30 @@
       "type": "decimal",
       "required": true
     },
-    "producto": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "prices"
-    },
     "colors": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::color.color",
       "inversedBy": "prices"
+    },
+    "sizes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::size.size",
+      "mappedBy": "price"
+    },
+    "model": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::model.model",
+      "inversedBy": "prices"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 99,
+      "minLength": 3
     }
   }
 }

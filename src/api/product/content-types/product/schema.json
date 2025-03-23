@@ -29,35 +29,29 @@
       "maxLength": 200,
       "minLength": 3
     },
-    "thumbnail": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "videos"
-      ]
-    },
-    "sub_category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::sub-category.sub-category",
-      "inversedBy": "productos"
-    },
-    "prices": {
+    "models": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::price.price",
+      "target": "api::model.model",
+      "mappedBy": "product"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
       "mappedBy": "producto"
+    },
+    "sub_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-category.sub-category",
+      "mappedBy": "products"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
     }
   }
 }

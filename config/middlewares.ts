@@ -34,8 +34,4 @@ export default [
   "strapi::session",
   "strapi::favicon",
   "strapi::public",
-  {
-    name: "global::rate-limit",
-    config: {},
-  },
 ];
